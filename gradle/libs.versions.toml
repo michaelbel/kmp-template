@@ -2,7 +2,7 @@
 agp = "8.6.0"
 min-sdk = "31"
 compile-sdk = "35"
-target-sdk = "34"
+target-sdk = "35"
 androidx-activity = "1.9.1"
 androidx-lifecycle = "2.8.0"
 compose = "1.6.11"
