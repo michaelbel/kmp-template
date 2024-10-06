@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 rootProject.name = "kmp-template"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 

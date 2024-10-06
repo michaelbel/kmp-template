@@ -1,4 +1,4 @@
-package org.michaelbel.kmptemplate
+package org.michaelbel.template
 
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme

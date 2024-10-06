@@ -1,3 +1,5 @@
+@file:OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
+
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -12,7 +14,16 @@ plugins {
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
+    js {
+        moduleName = "composeApp"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "composeApp.js"
+            }
+        }
+        binaries.executable()
+        useEsModules()
+    }
     wasmJs {
         moduleName = "composeApp"
         browser {
@@ -29,16 +40,13 @@ kotlin {
         }
         binaries.executable()
     }
-    
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
     jvm("desktop")
-    
     listOf(
         iosX64(),
         iosArm64(),
@@ -110,14 +118,23 @@ android {
     }
 }
 
-compose.desktop {
-    application {
-        mainClass = "org.michaelbel.template.MainKt"
+compose {
+    resources {
+        publicResClass = true
+        generateResClass = always
+    }
+    desktop {
+        application {
+            mainClass = "org.michaelbel.template.MainKt"
 
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.michaelbel.template"
-            packageVersion = "1.0.0"
+            nativeDistributions {
+                targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+                packageName = "org.michaelbel.template"
+                packageVersion = "1.0.0"
+            }
         }
+    }
+    experimental {
+        web.application {}
     }
 }
