@@ -46,7 +46,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    jvm("desktop")
+    jvm()
     listOf(
         iosX64(),
         iosArm64(),
@@ -59,12 +59,6 @@ kotlin {
     }
     
     sourceSets {
-        val desktopMain by getting
-        
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -72,10 +66,17 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(libs.kotlinx.coroutines.core)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
         }
-        desktopMain.dependencies {
+        androidMain.dependencies {
+            implementation(compose.preview)
+            implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.kotlinx.coroutines.play.services)
+            implementation(libs.androidx.activity.compose)
+        }
+        jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
         }
     }
