@@ -1,27 +1,65 @@
 [versions]
-agp = "8.7.2"
 min-sdk = "31"
 compile-sdk = "35"
 target-sdk = "35"
+agp = "8.7.2"
 androidx-activity = "1.9.3"
 androidx-lifecycle = "2.8.3"
-compose = "1.7.0"
+
+jetbrains-compose = "1.7.0"
+jetbrains-androidx-navigation-compose = "2.8.0-alpha08"
+jetbrains-androidx-lifecycle-viewmodel-compose = "2.8.1"
+jetbrains-androidx-core-bundle = "1.0.1"
 
 kotlin = "2.0.21"
 kotlinx-coroutines = "1.9.0"
+kotlinx-datetime = "0.6.1"
+kotlinx-serialization = "1.7.3"
+
+coil3 = "3.0.0-alpha08"
+ktor = "3.0.0"
+koin = "3.6.0-wasm-alpha2"
+koin-compose = "1.2.0-Beta4"
+okio = "3.9.1"
+buildkonfig = "0.15.2"
+napier = "2.7.1"
 
 [libraries]
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+jetbrains-androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "jetbrains-androidx-navigation-compose" }
+jetbrains-androidx-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetbrains-androidx-lifecycle-viewmodel-compose" }
+jetbrains-androidx-core-bundle = { module = "org.jetbrains.androidx.core:core-bundle", version.ref = "jetbrains-androidx-core-bundle" }
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
+coil3-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
+coil3-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-androidx-workmanager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin-compose" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin-compose" }
+okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
+napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
-compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+compose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
+buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
