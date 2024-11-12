@@ -1,16 +1,27 @@
 @file:OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
 
+import org.apache.commons.io.output.ByteArrayOutputStream
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+import java.nio.charset.Charset
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.android.application)
     alias(libs.plugins.compose)
+}
+
+private val gitCommitsCount: Int by lazy {
+    val stdout = ByteArrayOutputStream()
+    rootProject.exec {
+        commandLine("git", "rev-list", "--count", "HEAD")
+        standardOutput = stdout
+    }
+    stdout.toString(Charset.defaultCharset()).trim().toInt()
 }
 
 kotlin {
@@ -91,11 +102,12 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        applicationId = "org.michaelbel.template"
+        applicationId = "org.michaelbel.kmptemplate"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
+        versionCode = gitCommitsCount
+        setProperty("archivesBaseName", "KmpTemplate-v$versionName($versionCode)")
     }
     packaging {
         resources {
@@ -115,6 +127,8 @@ android {
         compose = true
     }
     dependencies {
+        api(libs.androidx.core.splashscreen)
+        api(libs.google.material)
         debugImplementation(compose.uiTooling)
     }
 }
@@ -137,5 +151,17 @@ compose {
     }
     experimental {
         web.application {}
+    }
+}
+
+tasks.register("printVersionName") {
+    doLast {
+        println(android.defaultConfig.versionName)
+    }
+}
+
+tasks.register("printVersionCode") {
+    doLast {
+        println(android.defaultConfig.versionCode.toString())
     }
 }
