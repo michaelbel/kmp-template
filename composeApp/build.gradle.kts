@@ -107,7 +107,6 @@ android {
         targetSdk = libs.versions.target.sdk.get().toInt()
         versionName = "1.0.0"
         versionCode = gitCommitsCount
-        setProperty("archivesBaseName", "KmpTemplate-v$versionName($versionCode)")
     }
     packaging {
         resources {
@@ -152,6 +151,10 @@ compose {
     experimental {
         web.application {}
     }
+}
+
+base {
+    archivesName.set("KmpTemplate-v${android.defaultConfig.versionName}(${android.defaultConfig.versionCode})")
 }
 
 tasks.register("printVersionName") {
