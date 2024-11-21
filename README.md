@@ -1,8 +1,8 @@
 Kotlin Multiplatform Template
 =
 
-![workflow-status](https://img.shields.io/github/actions/workflow/status/michaelbel/kmp-template/ci.yml?style=for-the-badge&logo=github&labelColor=3F464F)
-![last-commit](https://img.shields.io/github/last-commit/michaelbel/kmp-template?style=for-the-badge&logo=github&labelColor=3F464F)
+[![workflow-status](https://img.shields.io/github/actions/workflow/status/michaelbel/kmp-template/ci.yml?style=for-the-badge&logo=github&labelColor=3F464F)](https://github.com/michaelbel/kmp-template/actions)
+[![last-commit](https://img.shields.io/github/last-commit/michaelbel/kmp-template?style=for-the-badge&logo=github&labelColor=3F464F)](https://github.com/michaelbel/kmp-template/commits)
 
 This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
 
