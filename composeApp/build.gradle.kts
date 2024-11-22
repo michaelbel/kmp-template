@@ -25,6 +25,12 @@ private val gitCommitsCount: Int by lazy {
 }
 
 kotlin {
+    androidTarget {
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
     js {
         moduleName = "composeApp"
         browser {
@@ -50,12 +56,6 @@ kotlin {
             }
         }
         binaries.executable()
-    }
-    androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
     }
     jvm()
     listOf(

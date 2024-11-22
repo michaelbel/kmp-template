@@ -3,11 +3,15 @@ min-sdk = "31"
 compile-sdk = "35"
 target-sdk = "35"
 agp = "8.7.2"
+
 androidx-activity = "1.9.3"
 androidx-core-splashscreen = "1.0.1"
 androidx-lifecycle = "2.8.4"
+wearCompose = "1.4.0"
+composeUiTooling = "1.4.0"
 
 google-material = "1.12.0"
+google-horologist = "0.6.20"
 
 jetbrains-compose = "1.7.1"
 jetbrains-androidx-navigation-compose = "2.8.0-alpha10"
@@ -36,6 +40,7 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 google-material = { module = "com.google.android.material:material", version.ref = "google-material" }
+google-horologist-compose-layout = { module = "com.google.android.horologist:horologist-compose-layout", version.ref = "google-horologist" }
 
 jetbrains-androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "jetbrains-androidx-navigation-compose" }
 jetbrains-androidx-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetbrains-androidx-lifecycle-viewmodel-compose" }
@@ -45,6 +50,10 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splashscreen" }
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-wear-compose-foundation = { module = "androidx.wear.compose:compose-foundation", version.ref = "wearCompose" }
+androidx-wear-compose-material = { module = "androidx.wear.compose:compose-material", version.ref = "wearCompose" }
+androidx-wear-compose-navigation = { module = "androidx.wear.compose:compose-navigation", version.ref = "wearCompose" }
+androidx-wear-ui-tooling = { module = "androidx.wear.compose:compose-ui-tooling", version.ref = "composeUiTooling" }
 
 coil3-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
 coil3-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
@@ -67,6 +76,7 @@ napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 compose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
