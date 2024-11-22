@@ -19,7 +19,16 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
     <img src=".github/pics/android.png" alt="Android Image" width="33%">
 </div>
 
+<br/>
+
 **iOS**
 <div align="left">
     <img src=".github/pics/ios.png" alt="iOS Image" width="33%">
+</div>
+
+<br/>
+
+**JVM Desktop (macOS)**
+<div align="left">
+    <img src=".github/pics/jvm.png" alt="JVM Image" width="66%">
 </div>
