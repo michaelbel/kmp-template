@@ -32,3 +32,17 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
 <div align="left">
     <img src=".github/pics/jvm.png" alt="JVM Image" width="66%">
 </div>
+
+<br/>
+
+**JavaScript (Chrome Desktop)**
+<div align="left">
+    <img src=".github/pics/js.png" alt="JS Image" width="66%">
+</div>
+
+<br/>
+
+**WASM (Chrome Desktop)**
+<div align="left">
+    <img src=".github/pics/wasm.png" alt="WASM Image" width="66%">
+</div>
