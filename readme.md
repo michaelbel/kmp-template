@@ -15,6 +15,6 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
 ## Screenshots
 
 **Android**
-<div align="center">
+<div align="left">
     <img src=".github/pics/android.png" alt="Android Image" width="33%">
 </div>
