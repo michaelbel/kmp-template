@@ -32,6 +32,8 @@ import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuite
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -62,118 +64,82 @@ fun App() {
     MaterialTheme(
         colorScheme = if (isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()
     ) {
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = {
+        NavigationSuiteScaffold(
+            navigationSuiteItems = {
+                item(
+                    selected = selectedRoute == Navigation.Home,
+                    onClick = { selectedRoute = Navigation.Home },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Outlined.Home,
+                            contentDescription = null
+                        )
+                    },
+                    label = {
                         Text(
-                            text = TemplateName
+                            text = "Home"
                         )
                     }
                 )
-            },
-            bottomBar = {
-                BottomAppBar {
-                    NavigationBarItem(
-                        selected = selectedRoute == Navigation.Home,
-                        onClick = { selectedRoute = Navigation.Home },
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Outlined.Home,
-                                contentDescription = null
-                            )
-                        },
-                        label = {
-                            Text(
-                                text = "Home"
-                            )
-                        }
-                    )
-
-                    NavigationBarItem(
-                        selected = selectedRoute == Navigation.Chat,
-                        onClick = { selectedRoute = Navigation.Chat },
-                        icon = {
-                            BadgedBox(
-                                badge = {
-                                    this@BottomAppBar.AnimatedVisibility(
-                                        visible = selectedRoute != Navigation.Chat,
-                                        enter = fadeIn(),
-                                        exit = fadeOut()
+                item(
+                    selected = selectedRoute == Navigation.Chat,
+                    onClick = { selectedRoute = Navigation.Chat },
+                    icon = {
+                        BadgedBox(
+                            badge = {
+                                AnimatedVisibility(
+                                    visible = selectedRoute != Navigation.Chat,
+                                    enter = fadeIn(),
+                                    exit = fadeOut()
+                                ) {
+                                    Box(
+                                        contentAlignment = Alignment.Center,
+                                        modifier = Modifier
+                                            .size(24.dp)
+                                            .background(color = Color.Red, shape = CircleShape)
                                     ) {
-                                        Box(
-                                            contentAlignment = Alignment.Center,
-                                            modifier = Modifier
-                                                .size(24.dp)
-                                                .background(color = Color.Red, shape = CircleShape)
-                                        ) {
-                                            Text(
-                                                text = "12",
-                                                color = Color.White,
-                                                fontSize = 12.sp,
-                                                fontWeight = FontWeight.Medium
-                                            )
-                                        }
+                                        Text(
+                                            text = "12",
+                                            color = Color.White,
+                                            fontSize = 12.sp,
+                                            fontWeight = FontWeight.Medium
+                                        )
                                     }
                                 }
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Outlined.Email,
-                                    contentDescription = null
-                                )
                             }
-                        },
-                        label = {
-                            Text(
-                                text = "Chat"
-                            )
-                        }
-                    )
-
-                    NavigationBarItem(
-                        selected = selectedRoute == Navigation.Settings,
-                        onClick = { selectedRoute = Navigation.Settings },
-                        icon = {
+                        ) {
                             Icon(
-                                imageVector = Icons.Outlined.Settings,
+                                imageVector = Icons.Outlined.Email,
                                 contentDescription = null
                             )
-                        },
-                        label = {
-                            Text(
-                                text = "Settings"
-                            )
                         }
-                    )
-                }
-            },
-            snackbarHost = {
-                SnackbarHost(
-                    hostState = snackbarHostState
-                )
-            },
-            floatingActionButton = {
-                Button(
-                    onClick = {
-                        coroutineScope.launch {
-                            snackbarHostState.showSnackbar(
-                                message = "Single-line snackbar with action",
-                                actionLabel = "Action"
-                            )
-                        }
+                    },
+                    label = {
+                        Text(
+                            text = "Chat"
+                        )
                     }
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Phone,
-                        contentDescription = null
-                    )
-                }
+                )
+                item(
+                    selected = selectedRoute == Navigation.Settings,
+                    onClick = { selectedRoute = Navigation.Settings },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Outlined.Settings,
+                            contentDescription = null
+                        )
+                    },
+                    label = {
+                        Text(
+                            text = "Settings"
+                        )
+                    }
+                )
             }
-        ) { innerPadding ->
+        ) {
             NavHost(
                 navController = navHostController,
-                startDestination = selectedRoute,
-                modifier = Modifier.padding(innerPadding)
+                startDestination = selectedRoute
             ) {
                 composable<Navigation.Home> {
                     Box(
