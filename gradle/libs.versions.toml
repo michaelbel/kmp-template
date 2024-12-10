@@ -2,7 +2,7 @@
 min-sdk = "31"
 compile-sdk = "35"
 target-sdk = "35"
-agp = "8.7.2"
+agp = "8.7.3"
 
 androidx-activity = "1.9.3"
 androidx-core-splashscreen = "1.0.1"

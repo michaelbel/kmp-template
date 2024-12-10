@@ -1,8 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-rootProject.name = "kmp-template"
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
 pluginManagement {
     repositories {
         google {
@@ -31,3 +28,7 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+
+rootProject.name = "kmp-template"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

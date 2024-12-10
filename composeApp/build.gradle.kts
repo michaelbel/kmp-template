@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalWasmDsl::class, ExperimentalKotlinGradlePluginApi::class)
+@file:OptIn(ExperimentalWasmDsl::class)
 
 import org.apache.commons.io.output.ByteArrayOutputStream
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
@@ -136,6 +136,10 @@ android {
     }
 }
 
+base {
+    archivesName.set("KmpTemplate-v${android.defaultConfig.versionName}(${android.defaultConfig.versionCode})")
+}
+
 compose {
     resources {
         publicResClass = true
@@ -155,10 +159,6 @@ compose {
     experimental {
         web.application {}
     }
-}
-
-base {
-    archivesName.set("KmpTemplate-v${android.defaultConfig.versionName}(${android.defaultConfig.versionCode})")
 }
 
 tasks.register("printVersionName") {
