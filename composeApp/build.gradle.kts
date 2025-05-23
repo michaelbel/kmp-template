@@ -36,7 +36,7 @@ kotlin {
         }
     }
     js {
-        moduleName = "composeApp"
+        outputModuleName = "composeApp"
         browser {
             commonWebpackConfig {
                 outputFileName = "composeApp.js"
@@ -46,14 +46,13 @@ kotlin {
         useEsModules()
     }
     wasmJs {
-        moduleName = "composeApp"
+        outputModuleName = "composeApp"
         browser {
             val projectDirPath = project.projectDir.path
             commonWebpackConfig {
                 outputFileName = "composeApp.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
                         add(projectDirPath)
                     }
                 }
@@ -157,9 +156,6 @@ compose {
                 packageVersion = "1.0.0"
             }
         }
-    }
-    experimental {
-        web.application {}
     }
 }
 
