@@ -6,6 +6,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
@@ -37,10 +42,10 @@ fun App() {
                     selected = selectedRoute == Navigation.Home,
                     onClick = { selectedRoute = Navigation.Home },
                     icon = {
-                        /*Icon(
+                        Icon(
                             imageVector = Icons.Outlined.Home,
                             contentDescription = null
-                        )*/
+                        )
                     },
                     label = {
                         Text(
@@ -52,10 +57,10 @@ fun App() {
                     selected = selectedRoute == Navigation.Chat,
                     onClick = { selectedRoute = Navigation.Chat },
                     icon = {
-                        /*Icon(
-                                imageVector = Icons.Outlined.Email,
-                                contentDescription = null
-                            )*/
+                        Icon(
+                            imageVector = Icons.Outlined.Email,
+                            contentDescription = null
+                        )
                     },
                     label = {
                         Text(
@@ -67,10 +72,10 @@ fun App() {
                     selected = selectedRoute == Navigation.Settings,
                     onClick = { selectedRoute = Navigation.Settings },
                     icon = {
-                        /*Icon(
+                        Icon(
                             imageVector = Icons.Outlined.Settings,
                             contentDescription = null
-                        )*/
+                        )
                     },
                     label = {
                         Text(
