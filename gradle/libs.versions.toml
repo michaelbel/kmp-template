@@ -1,8 +1,8 @@
 [versions]
 min-sdk = "31"
-compile-sdk = "35"
+compile-sdk = "36"
 target-sdk = "36"
-agp = "8.10.0"
+agp = "8.11.0"
 
 kotlin = "2.1.21"
 kotlinx-coroutines = "1.10.2"
@@ -23,7 +23,7 @@ androidx-navigationevent = "1.0.0-alpha01"
 coil3 = "3.2.0"
 ktor = "3.1.3"
 koin = "4.0.4"
-okio = "3.11.0"
+okio = "3.12.0"
 buildkonfig = "0.17.1"
 napier = "2.7.1"
 
@@ -38,6 +38,7 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 jetbrains-androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "jetbrains-androidx-navigation-compose" }
 jetbrains-androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "jetbrains-androidx-lifecycle" }
 jetbrains-androidx-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetbrains-androidx-lifecycle" }
+jetbrains-androidx-lifecycle-savedstate = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "jetbrains-androidx-lifecycle" }
 jetbrains-androidx-lifecycle-runtime-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "jetbrains-androidx-lifecycle" }
 jetbrains-androidx-core-bundle = { module = "org.jetbrains.androidx.core:core-bundle", version.ref = "jetbrains-androidx-core-bundle" }
 
