@@ -1,11 +1,10 @@
 @file:OptIn(ExperimentalWasmDsl::class)
 
-import org.apache.commons.io.output.ByteArrayOutputStream
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-import java.nio.charset.Charset
+import java.nio.charset.StandardCharsets
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -16,16 +15,16 @@ plugins {
 }
 
 private val gitCommitsCount: Int by lazy {
-    when {
-        System.getProperty("os.name").contains("Windows", ignoreCase = true) -> 1
-        else -> {
-            val stdout = ByteArrayOutputStream()
-            exec {
-                commandLine("git", "rev-list", "--count", "HEAD")
-                standardOutput = stdout
-            }
-            stdout.toString(Charset.defaultCharset()).trim().toInt()
+    try {
+        val isWindows = System.getProperty("os.name").contains("Windows", ignoreCase = true)
+        val processBuilder = when {
+            isWindows -> ProcessBuilder("cmd", "/c", "git", "rev-list", "--count", "HEAD")
+            else -> ProcessBuilder("git", "rev-list", "--count", "HEAD")
         }
+        processBuilder.redirectErrorStream(true)
+        processBuilder.start().inputStream.bufferedReader(StandardCharsets.UTF_8).readLine().trim().toInt()
+    } catch (_: Exception) {
+        1
     }
 }
 
