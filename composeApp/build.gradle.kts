@@ -1,6 +1,7 @@
-@file:OptIn(ExperimentalWasmDsl::class)
+@file:OptIn(ExperimentalWasmDsl::class, ExperimentalKotlinGradlePluginApi::class)
 
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
@@ -70,7 +71,11 @@ kotlin {
             isStatic = true
         }
     }
-    
+    dependencies {
+        implementation(libs.kotlinx.coroutines.core)
+        implementation(libs.kotlinx.serialization.json)
+        implementation(libs.jetbrains.androidx.navigation.compose)
+    }
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -82,9 +87,6 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.kotlinx.serialization.json)
-            implementation(libs.jetbrains.androidx.navigation.compose)
         }
         androidMain.dependencies {
             implementation(compose.preview)
