@@ -1,5 +1,4 @@
 @file:Suppress("UnstableApiUsage")
-
 pluginManagement {
     repositories {
         google {
@@ -13,7 +12,6 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-
 dependencyResolutionManagement {
     repositories {
         google {
@@ -26,9 +24,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-
-include(":composeApp")
-
-rootProject.name = "kmp-template"
-
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+rootProject.name = "kmp-template"
+include(":composeApp")
