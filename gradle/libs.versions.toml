@@ -2,7 +2,7 @@
 min-sdk = "31"
 compile-sdk = "36"
 target-sdk = "36"
-agp = "8.13.0"
+agp = "8.13.1"
 
 kotlin = "2.2.21"
 kotlinx-coroutines = "1.10.2"
@@ -12,19 +12,19 @@ kotlinx-serialization = "1.9.0"
 jetbrains-compose = "1.9.3"
 jetbrains-androidx-lifecycle = "2.9.6"
 jetbrains-androidx-navigation-compose = "2.9.1"
-jetbrains-androidx-navigation3 = "1.0.0-alpha04"
+jetbrains-androidx-navigation3 = "1.0.0-alpha05"
 jetbrains-androidx-core-bundle = "1.0.1"
 
 google-material = "1.13.0"
 
-androidx-activity = "1.11.0"
+androidx-activity = "1.12.0"
 androidx-core-splashscreen = "1.2.0"
-androidx-navigationevent = "1.0.0-rc01"
+androidx-navigationevent = "1.0.0"
 
 coil3 = "3.3.0"
 ktor = "3.3.2"
 koin = "4.1.1"
-okio = "3.16.2"
+okio = "3.16.4"
 buildkonfig = "0.17.1"
 napier = "2.7.1"
 
