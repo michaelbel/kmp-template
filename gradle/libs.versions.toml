@@ -2,14 +2,14 @@
 min-sdk = "31"
 compile-sdk = "36"
 target-sdk = "36"
-agp = "8.13.2"
+agp = "9.0.0"
 
 kotlin = "2.3.0"
 kotlinx-coroutines = "1.10.2"
 kotlinx-datetime = "0.7.1"
 kotlinx-serialization = "1.9.0"
 
-jetbrains-compose = "1.9.3"
+jetbrains-compose = "1.10.0"
 jetbrains-androidx-lifecycle = "2.9.6"
 jetbrains-androidx-navigation-compose = "2.9.1"
 jetbrains-androidx-navigation3 = "1.0.0-alpha06"
@@ -71,7 +71,6 @@ napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 compose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
