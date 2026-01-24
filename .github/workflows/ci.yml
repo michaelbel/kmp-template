@@ -1,4 +1,4 @@
-name: CI
+name: ci
 
 on:
   push:
@@ -11,11 +11,11 @@ on:
 
 concurrency:
   group: environment-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   job-common:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       SHORT_SHA: ${{ steps.expose_sha.outputs.short_sha }}
     steps:
@@ -28,7 +28,7 @@ jobs:
 
   build-android:
     needs: job-common
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     env:
       SHORT_SHA: ${{ needs.job-common.outputs.SHORT_SHA }}
@@ -73,17 +73,9 @@ jobs:
           path: |
             composeApp/build/outputs/apk
 
-      - name: expose version name
-        id: version_name
-        run: |
-          VERSION_NAME=$(./gradlew printVersionName -q)
-          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
-
-      - name: expose version code
-        id: version_code
-        run: |
-          VERSION_CODE=$(./gradlew printVersionCode -q)
-          echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_ENV
+      - name: expose version
+        id: version
+        run: ./gradlew -q printVersion | tee -a $GITHUB_ENV | tee -a $GITHUB_OUTPUT
 
       - name: expose apk path
         run: |
