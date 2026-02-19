@@ -1,5 +1,6 @@
 @file:OptIn(ExperimentalWasmDsl::class, ExperimentalKotlinGradlePluginApi::class)
 
+import com.android.build.api.dsl.ApplicationExtension
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
@@ -29,6 +30,9 @@ private val gitCommitsCount: Int by lazy {
     }
 }
 
+private val appVersionName = "1.0.0"
+private val appVersionCode: Int = gitCommitsCount
+
 kotlin {
     androidTarget {
         compilerOptions {
@@ -52,9 +56,7 @@ kotlin {
             commonWebpackConfig {
                 outputFileName = "composeApp.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        add(projectDirPath)
-                    }
+                    static(projectDirPath)
                 }
             }
         }
@@ -78,18 +80,18 @@ kotlin {
     }
     sourceSets {
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.materialIconsExtended)
-            implementation(compose.material3)
-            implementation(compose.material3AdaptiveNavigationSuite)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.material)
+            implementation(libs.compose.material.icons.extended)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.material3.adaptive.navigation.suite)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.components.resources)
+            implementation(libs.compose.components.ui.tooling.preview)
         }
         androidMain.dependencies {
-            implementation(compose.preview)
+            implementation(libs.compose.preview)
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.kotlinx.coroutines.play.services)
             implementation(libs.androidx.activity.compose)
@@ -100,20 +102,22 @@ kotlin {
     }
 }
 
-android {
+extensions.configure<ApplicationExtension> {
     namespace = "org.michaelbel.template"
     compileSdk = libs.versions.compile.sdk.get().toInt()
 
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+    sourceSets.named("main") {
+        manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        res.directories.add("src/androidMain/res")
+        resources.directories.add("src/commonMain/resources")
+    }
 
     defaultConfig {
         applicationId = "org.michaelbel.kmptemplate"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
-        versionName = "1.0.0"
-        versionCode = gitCommitsCount
+        versionName = appVersionName
+        versionCode = appVersionCode
     }
     packaging {
         resources {
@@ -132,15 +136,16 @@ android {
     buildFeatures {
         compose = true
     }
-    dependencies {
-        api(libs.androidx.core.splashscreen)
-        api(libs.google.material)
-        debugImplementation(compose.uiTooling)
-    }
+}
+
+dependencies {
+    api(libs.androidx.core.splashscreen)
+    api(libs.google.material)
+    debugImplementation(libs.compose.ui.tooling)
 }
 
 base {
-    archivesName.set("KmpTemplate-v${android.defaultConfig.versionName}(${android.defaultConfig.versionCode})")
+    archivesName.set("KmpTemplate-v$appVersionName($appVersionCode)")
 }
 
 compose {
@@ -155,7 +160,7 @@ compose {
             nativeDistributions {
                 targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
                 packageName = "org.michaelbel.template"
-                packageVersion = "1.0.0"
+                packageVersion = appVersionName
             }
         }
     }
@@ -163,7 +168,7 @@ compose {
 
 tasks.register("printVersion") {
     doLast {
-        println("VERSION_NAME=${android.defaultConfig.versionName}")
-        println("VERSION_CODE=${android.defaultConfig.versionCode}")
+        println("VERSION_NAME=$appVersionName")
+        println("VERSION_CODE=$appVersionCode")
     }
 }
