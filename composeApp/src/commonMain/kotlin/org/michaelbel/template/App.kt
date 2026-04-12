@@ -13,6 +13,7 @@ import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteItem
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -37,51 +38,26 @@ fun App() {
         colorScheme = if (isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()
     ) {
         NavigationSuiteScaffold(
-            navigationSuiteItems = {
-                item(
+            navigationItems = {
+                NavigationSuiteItem(
                     selected = selectedRoute == Navigation.Home,
                     onClick = { selectedRoute = Navigation.Home },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Outlined.Home,
-                            contentDescription = null
-                        )
-                    },
-                    label = {
-                        Text(
-                            text = "Home"
-                        )
-                    }
+                    icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
+                    label = { Text(text = "Home") }
                 )
-                item(
+
+                NavigationSuiteItem(
                     selected = selectedRoute == Navigation.Chat,
                     onClick = { selectedRoute = Navigation.Chat },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Outlined.Email,
-                            contentDescription = null
-                        )
-                    },
-                    label = {
-                        Text(
-                            text = "Chat"
-                        )
-                    }
+                    icon = { Icon(imageVector = Icons.Outlined.Email, contentDescription = null) },
+                    label = { Text(text = "Chat") }
                 )
-                item(
+
+                NavigationSuiteItem(
                     selected = selectedRoute == Navigation.Settings,
                     onClick = { selectedRoute = Navigation.Settings },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Outlined.Settings,
-                            contentDescription = null
-                        )
-                    },
-                    label = {
-                        Text(
-                            text = "Settings"
-                        )
-                    }
+                    icon = { Icon(imageVector = Icons.Outlined.Settings, contentDescription = null) },
+                    label = { Text(text = "Settings") }
                 )
             }
         ) {
