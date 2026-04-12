@@ -1,4 +1,3 @@
 package org.michaelbel.template
 
-actual val TemplateName: String
-    get() = "Android Template"
+actual val TemplateName: String = "Android Template"
