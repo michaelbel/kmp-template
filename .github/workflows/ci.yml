@@ -32,6 +32,7 @@ jobs:
     timeout-minutes: 60
     env:
       SHORT_SHA: ${{ needs.job-common.outputs.SHORT_SHA }}
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
